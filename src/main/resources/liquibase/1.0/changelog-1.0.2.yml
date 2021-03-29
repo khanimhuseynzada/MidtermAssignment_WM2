@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: Creating books table
+      author: Xanım Hüseynzadə
+      changes:
+        - createTable:
+            tableName: books
+            remarks: Books table
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: author
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: publish_date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: category_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: book_category_id
+                    references: categories(id)

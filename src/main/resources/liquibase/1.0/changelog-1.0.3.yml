@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: Creating pickup table
+      author: Xanım Hüseynzadə
+      changes:
+        - createTable:
+            tableName: pickups
+            remarks: Pickups table (many-to-many)
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: drop_off
+                  type: boolean
+                  defaultValue: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: pickup_user_id
+                    references: users(id)
+              - column:
+                  name: book_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: pickup_book_id
+                    references: books(id)
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false

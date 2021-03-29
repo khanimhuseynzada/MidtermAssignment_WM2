@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: Creating employee table
+      author: Xanım Hüseynzadə
+      changes:
+        - createTable:
+            tableName: users
+            remarks: Users table
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: token
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
